@@ -3,67 +3,132 @@
 
 {% block content %}
 <style>
-    #timer ,#title, #area, #wheel , #input-uid , #end-at{
-        box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+    #input-uid > input::placeholder{
+        color : rgb(223, 222, 222);
+    }
+    #area,
+    #wheel,
+    #input-uid,
+    #end-at {
+        box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
         border-radius: 1.5%;
     }
-    #timer{
+
+    #timer {
         padding: 1.25em;
+        border-radius: 10px;
+        background-color: #126FEB;
     }
-    .timer-box{
-        background-color: #1b41b2;
+
+    .timer-box {
+        background-image: linear-gradient(to right top, #e982ec, #ca7bef, #a776f1, #7b72f1, #396eef);
         padding: 1.5em;
-        border-radius: 10%;
+        border-radius: 10px;
         color: white;
     }
-    .timer-box > p {
-        text-align: center;
-    }
-    #timer > div > p {
-        text-align: center;
-        color : gainsboro;
-        margin-top : 0.4em;
-    }
-   
-    #wheel > div > div{
+
+    .timer-box p {
         text-align: center;
         align-items: center;
-        background-color: #2354e6;
-        border: #091e5c solid 1.5em;
+        transform: translate(-15px);
+    }
+
+    #timer>div>p {
+        text-align: center;
+        color: gainsboro;
+        margin-top: 0.4em;
+        
+    }
+
+    #wheel>div>div {
+        text-align: center;
+        align-items: center;
+        /*border: #ccc solid 1.5em;*/
         /* padding : 1em; */
     }
-    
+
     /* #wheel{
         padding : 1em;
     } */
 
-    .wheel-selected{
-        border: #a8b3d4 solid 1.5em;
+    .wheel-selected {
+        /*border: #a8b3d4 solid 1.5em;*/
     }
 
-   #input-uid > input{
-        background-color: #1b41b2;
+    #input-uid>input {
+        background-color: #126FEB;
         color: white;
-   }
+        border: none;
+        outline: none;
+    }
+    #input-uid {
+        width: 100%;
+        max-width: 622px;
+        margin: 0 auto;
+    }
 
-   #title{
-        background-color: #2354e6;
-   }
-   #area , #end-at{
+    #area,
+    #end-at {
         background-color: #1b41b2;
-   }
-   
+    }
+    #main {
+        background-image: linear-gradient(to left bottom, #f83ee5, #9d8aff, #00b2ff, #00caff, #12d9eb);
+        height: 100vh;
+    }
+    .text-white {
+        padding: 0px;
+    }
+    #end-at {
+        background-color: #126FEB;
+        font-size: 24px;
+        border-radius: 5px;
+        padding: 8px 12px;
+        box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    }
+    .wheel-item {
+        background-image: linear-gradient(to left bottom, #73d9f6, #00bbff, #0099ff, #0071ff, #123aeb);
+        border-radius: 15px;
+        width: 100%;
+        max-width: 190px;
+        margin: 0 27px 20px 0;
+    }
+    #roll {
+        background-color: #D4D4D4;
+        border-radius: 15px;
+        width: 100%;
+        max-width: 190px;
+        margin: 0 27px 20px 0;
+    }
+    #wheel-1, #wheel-4, #wheel-6 {
+        margin-left: 30px;
+    }
+    .title-content h2 {
+        text-align: center;
+    }
+    .title-content {
+        padding: 8px 12px !important;
+        border-radius: 8px;
+        background-color: #126FEB;
+        box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    }
+    #area {
+        height: 100%;
+        max-height: 300px;
+        overflow-y: scroll;
+    }
+
+
 </style>
 <div id="main" class="h-100 d-flex align-items-center justify-content-center">
 
     <script>
         $.ajax({
-            type : 'GET' , 
-            url : '/getTimer' , 
-            success: function(data){
+            type: 'GET',
+            url: '/getTimer',
+            success: function (data) {
                 data = data.end;
                 console.log(data)
-                var end = new Date(data.year,data.month -1,data.day,data.hour,data.second); 
+                var end = new Date(data.year, data.month - 1, data.day, data.hour, data.second);
                 // var end = new Date(2022 , 9, 27 , 0 , 0 , 0); 
                 var now = new Date();
                 console.log(now)
@@ -74,8 +139,8 @@
                 var timer; // for storing the interval (to stop or pause later if needed)
                 function updateClock() {
                     now = new Date();
-                    var distance = end- now;
-                    if(distance < 0  ){
+                    var distance = end - now;
+                    if (distance < 0) {
                         clearInterval(timer);
                         alert('Expired')
                     }
@@ -94,11 +159,13 @@
             }
         })
     </script>
-    
+
     <div class="row h-60 w-100" style="margin: 0 12em ;">
-        <h3 class="text-white mb-3"><span id="end-at" class="px-2 py-1">Kết thúc lúc</span></h3>
+        <h3 class="text-white mb-3">
+            <span id="end-at" class="px-2 py-1 custom">Kết thúc lúc</span>
+        </h3>
         <div class="col-md-4 d-flex flex-column">
-            <div id="timer" class="row" style="background-color:#2354e6;">
+            <div id="timer" class="row">
                 <div class="col-3">
                     <div class="timer-box" id="day">
                         <p class="h1"></p>
@@ -126,10 +193,10 @@
             </div>
             <div id="prize" class="text-white mt-3 flex-grow-1">
                 <div class="row h-100">
-                    <div id="title" class="h5 py-4" style="height: 20%;"> 
-                        PHẦN THƯỞNG CỦA TÔI
+                    <div id="title" class="h5 py-4 title-content">
+                        <h2>Phần thưởng của tôi</h2>
                     </div>
-                    <div id="area" style="height:80%; overflow-y: scroll;">
+                    <div id="area">
                         <ul>
 
                         </ul>
@@ -139,11 +206,9 @@
         </div>
         <div class="col-md-8 px-5">
             <div id="input-uid" class="row mb-3">
-                <input type="text" class="form-control">
+                <input type="text" class="form-control" placeholder="Your UID here .. ">
             </div>
-            <div id="wheel" class="text-white" >
-                
-            
+            <div id="wheel" class="text-white">
                 <div class="row">
                     <div class="col-4 wheel-item" id="wheel-1">
                         <img src="media/{{prize.0.image}}" alt="" width="100px" height="auto">
@@ -156,7 +221,7 @@
                     <div class="col-4 wheel-item" id="wheel-3">
                         <img src="media/{{prize.2.image}}" alt="" width="100px" height="auto">
                         <p class="h5">{{prize.2.prize}}</p>
-                        
+
                     </div>
                 </div>
                 <div class="row">
@@ -165,13 +230,13 @@
                         <p class="h5">{{prize.3.prize}}</p>
 
                     </div>
-                    <div class="col-4 d-flex justify-content-center align-items-center" id="roll" style="background-color: #596381">
-                        <button class="btn btn btn-dark px-4 py-2">ROLL</button>
+                    <div class="col-4 d-flex justify-content-center align-items-center" id="roll">
+                        <button class="btn btn-secondary px-4 py-2">ROLL</button>
                     </div>
                     <div class="col-4 wheel-item" id="wheel-5">
                         <img src="media/{{prize.4.image}}" alt="" width="100px" height="auto">
                         <p class="h5">{{prize.4.prize}}</p>
-                        
+
                     </div>
                 </div>
                 <div class="row">
@@ -183,12 +248,12 @@
                     <div class="col-4 wheel-item" id="wheel-7">
                         <img src="media/{{prize.6.image}}" alt="" width="100px" height="auto">
                         <p class="h5">{{prize.6.prize}}</p>
-                        
+
                     </div>
                     <div class="col-4 wheel-item" id="wheel-8">
                         <img src="media/{{prize.7.image}}" alt="" width="100px" height="auto">
                         <p class="h5">{{prize.7.prize}}</p>
-                        
+
                     </div>
                 </div>
             </div>
@@ -197,29 +262,29 @@
     </div>
 </div>
 <script>
-    
+
     var round_item = []
     var rolling = [];
     var time = [];
 
-    function add_to_myprize(prize){
+    function add_to_myprize(prize) {
         var area_prize = document.getElementById('area')
         area_prize = area_prize.children[0];
-        for(let i = 0 ; i < 30 ; i++)
-        area_prize.innerHTML += "<li >" + prize + "</li>"
+        
+            area_prize.innerHTML += "<li >" + prize + "</li>"
     }
 
-    function render_wheel(at , prize){
-        for(let i =0 ; i < round_item.length ; i++){
-            round_item[rolling[i]].style.border = "#091e5c solid 1.5em";
+    function render_wheel(at, prize) {
+        for (let i = 0; i < round_item.length; i++) {
+            round_item[rolling[i]].style.border = "#ccc solid 5px";
         }
-        round_item[rolling[at]].style.border = "#a8b3d4 solid 1.5em";
+        round_item[rolling[at]].style.border = "#06CE31 solid 5px";
         var a = setTimeout(() => {
-            render_wheel(at + 1 , prize);
+            render_wheel(at + 1, prize);
         }, (time[at]));
-        if(at+1 == rolling.length) {
+        if (at + 1 == rolling.length) {
             clearInterval(a);
-            alert("Chúc mừng bạn đã nhận được " +  prize)
+            alert("Chúc mừng bạn đã nhận được " + prize)
             console.log("Chúc mừng bạn đã nhận được " + prize)
             add_to_myprize(prize);
             return;
@@ -227,61 +292,61 @@
         }
     }
 
-    function effect_rolling(result ){
-        var round = [1,2,3,5,8,7,6,4]
-        round_item = []; rolling = [] ; time = [];
-        for(let i = 0; i < round.length ; i++){
-            var temp = document.getElementById('wheel-'+round[i] );
+    function effect_rolling(result) {
+        var round = [1, 2, 3, 5, 8, 7, 6, 4]
+        round_item = []; rolling = []; time = [];
+        for (let i = 0; i < round.length; i++) {
+            var temp = document.getElementById('wheel-' + round[i]);
             round_item.push(temp);
         }
         var indexOfResult = round.indexOf(result);
-        for(let i = 0 ; i < 5 ; i++){
-            for(let j =0 ; j < round.length ; j ++) rolling.push(j)
+        for (let i = 0; i < 5; i++) {
+            for (let j = 0; j < round.length; j++) rolling.push(j)
         }
-        for(let i = 0 ; i <= indexOfResult ; i++) rolling.push(i);
-        for(let i = 0 ; i < rolling.length ; i ++ ) time.push(i * 15);
+        for (let i = 0; i <= indexOfResult; i++) rolling.push(i);
+        for (let i = 0; i < rolling.length; i++) time.push(i * 15);
         // time.reverse();
         // #091e5c solid 1.5em
         // #a8b3d4 solid 1.5em
 
-        var prize = document.getElementById(('wheel-' +result)).children;
+        var prize = document.getElementById(('wheel-' + result)).children;
         var prize_result = (prize[prize.length - 1]).innerText;
         console.log(prize_result)
-        render_wheel(0 , prize_result);
-        
+        render_wheel(0, prize_result);
+
     }
 
-    $('#roll>button').click(function(e){
+    $('#roll>button').click(function (e) {
         e.preventDefault();
-        if($("#input-uid>input").val().replace(/^\s+|\s+$/g, "").length != 0){
+        if ($("#input-uid>input").val().replace(/^\s+|\s+$/g, "").length != 0) {
             let list_prize = [];
-            for(let i = 1 ; i <= 8 ; i++){
-                let s = 'wheel-' + i ;
+            for (let i = 1; i <= 8; i++) {
+                let s = 'wheel-' + i;
                 var wheel = document.getElementById(s).children;
                 list_prize.push(wheel[wheel.length - 1].innerText)
             }
             data = {
-                    'uid' : $("#input-uid>input").val(),
-                    'event' : '{{event.name}}', 
-                    'list_prize' : list_prize
-                }
+                'uid': $("#input-uid>input").val(),
+                'event': '{{event.name}}',
+                'list_prize': list_prize
+            }
             console.log(data)
             $.ajax({
-                type: 'POST' , 
-                url : '/roll/' , 
-                headers : {
-                    'X-CSRFToken':'{{ csrf_token }}'
+                type: 'POST',
+                url: '/roll/',
+                headers: {
+                    'X-CSRFToken': '{{ csrf_token }}'
                 },
-                data : data,
-                success : function(data) {
+                data: data,
+                success: function (data) {
                     console.log(data);
                     effect_rolling(data.result)
                 },
-                error: function(err) {
+                error: function (err) {
                     console.log(err)
                 }
             })
-        }else{
+        } else {
             alert('UID can not be empty');
         }
     })

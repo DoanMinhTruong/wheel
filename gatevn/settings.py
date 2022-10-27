@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'wheel_prize'
+    'wheel_prize',
+    'import_export',
 ]
 
 MIDDLEWARE = [
