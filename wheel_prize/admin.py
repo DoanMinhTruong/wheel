@@ -6,7 +6,12 @@ from import_export.admin import ImportExportModelAdmin
 admin.site.register(Event )
 admin.site.register(EventPrize)
 admin.site.register(PrizeWinPercent)
+# admin.site.register(Limit)
 # admin.site.register(PrizeLog)
 @admin.register(PrizeLog)
 class PrizeLogAdmin(ImportExportModelAdmin):
+    pass
+
+@admin.register(Limit)
+class LimitAdmin(ImportExportModelAdmin):
     pass

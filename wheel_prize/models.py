@@ -39,6 +39,13 @@ class PrizeWinPercent(models.Model):
     percent = models.FloatField(blank= False , null = False)
     def __str__(self):
         return str(self.prize_number) + ' | ' + str(self.percent) + '%'
+
+class Limit(models.Model):
+    uid = models.TextField(blank = True , null = False , unique = True) 
+    limit = models.IntegerField(default = 0 )
+    def __str__(self):
+        return str(self.uid) + " | " + str(self.limit)
+
 class PrizeLog(models.Model):
     uid = models.TextField(blank = False, null = False)
     prize = models.CharField(max_length=255)

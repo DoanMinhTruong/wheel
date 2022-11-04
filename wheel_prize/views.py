@@ -40,6 +40,14 @@ import random
 def roll(request):
     if(request.method == 'POST'):
         uid = request.POST.get('uid')
+        try:
+            limit = Limit.objects.get(uid = uid)
+        except:
+            return JsonResponse({'uid' : 'invalid_uid'} , status = 404)
+        if(limit.limit <= 0 ):
+            return JsonResponse({'uid' : 'invalid_uid'} , status = 404)
+        limit.limit -= 1
+        limit.save()
         event = Event.objects.filter(status = 1).order_by("-id")[0]
         prizes = PrizeWinPercent.objects.all()
         list_prize = [([i.prize_number] * (int(i.percent)* 10)) for i in prizes]

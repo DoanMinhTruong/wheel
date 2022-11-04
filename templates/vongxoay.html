@@ -259,6 +259,29 @@
             </div>
         </div>
 
+        <!-- Button trigger modal -->
+<button id="modal-button" style="display: none;" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#resultModal">
+    Launch demo modal
+  </button>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="resultModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Kết quả</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body" id="modal-result-text">
+          
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
     </div>
 </div>
 <script>
@@ -266,12 +289,16 @@
     var round_item = []
     var rolling = [];
     var time = [];
+    var roll_interval = null ; 
+
 
     function add_to_myprize(prize) {
         var area_prize = document.getElementById('area')
         area_prize = area_prize.children[0];
-        
-            area_prize.innerHTML += "<li >" + prize + "</li>"
+        area_prize.innerHTML += "<li >" + prize + "</li>"
+
+        $('#modal-result-text').text('Chúc mừng bạn đã nhận được '  + prize) ;
+        $('#modal-button').click();
     }
 
     function render_wheel(at, prize) {
@@ -279,13 +306,14 @@
             round_item[rolling[i]].style.border = "#ccc solid 5px";
         }
         round_item[rolling[at]].style.border = "#06CE31 solid 5px";
-        var a = setTimeout(() => {
+        roll_interval = setTimeout(() => {
             render_wheel(at + 1, prize);
         }, (time[at]));
         if (at + 1 == rolling.length) {
-            clearInterval(a);
-            alert("Chúc mừng bạn đã nhận được " + prize)
-            console.log("Chúc mừng bạn đã nhận được " + prize)
+            clearInterval(roll_interval);
+            roll_interval = null;
+            // alert("Chúc mừng bạn đã nhận được " + prize)
+            // console.log("Chúc mừng bạn đã nhận được " + prize)
             add_to_myprize(prize);
             return;
 
@@ -318,6 +346,10 @@
 
     $('#roll>button').click(function (e) {
         e.preventDefault();
+        if(roll_interval != null){
+            alert("Vòng xoay đang được thực hiện") ;
+            return ;
+        }
         if ($("#input-uid>input").val().replace(/^\s+|\s+$/g, "").length != 0) {
             let list_prize = [];
             for (let i = 1; i <= 8; i++) {
@@ -343,7 +375,7 @@
                     effect_rolling(data.result)
                 },
                 error: function (err) {
-                    console.log(err)
+                    alert("Hãy kiểm tra lại UID hoặc điều kiện tham gia của bạn")
                 }
             })
         } else {
