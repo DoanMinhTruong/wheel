@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-edxg=18kj#1=5bq(n!muk=&8&y4*l*#@4=83do71p@6oqw+5o#
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["gateio-event.herokuapp.com" , "localhost"]
+ALLOWED_HOSTS = ["gateio-event.herokuapp.com"]
 
 
 # Application definition
