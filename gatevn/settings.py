@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-edxg=18kj#1=5bq(n!muk=&8&y4*l*#@4=83do71p@6oqw+5o#
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["gateio-event.herokuapp.com"]
+ALLOWED_HOSTS = ["gateio-event.herokuapp.com" , '*']
 
 
 # Application definition
@@ -118,7 +118,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
