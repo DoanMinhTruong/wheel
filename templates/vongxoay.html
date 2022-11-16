@@ -3,124 +3,108 @@
 
 {% block content %}
 <style>
-    #input-uid > input::placeholder{
-        color : rgb(223, 222, 222);
+    /* .row:has( > .timer-box){
+        margin : 0 0px;
+        color : white;
+        font-weight: bold;
     }
-    #area,
-    #wheel,
-    #input-uid,
-    #end-at {
-        box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-        border-radius: 1.5%;
-    }
-
-    #timer {
-        padding: 1.25em;
-        border-radius: 10px;
-        background-color: #126FEB;
-    }
-
-    .timer-box {
-        background-image: linear-gradient(to right top, #e982ec, #ca7bef, #a776f1, #7b72f1, #396eef);
-        padding: 1.5em;
-        border-radius: 10px;
-        color: white;
-    }
-
-    .timer-box p {
-        text-align: center;
-        align-items: center;
-        transform: translate(-15px);
-    }
-
-    #timer>div>p {
-        text-align: center;
-        color: gainsboro;
-        margin-top: 0.4em;
-        
-    }
-
-    #wheel>div>div {
-        text-align: center;
-        align-items: center;
-        /*border: #ccc solid 1.5em;*/
-        /* padding : 1em; */
-    }
-
-    /* #wheel{
-        padding : 1em;
-    } */
-
-    .wheel-selected {
-        /*border: #a8b3d4 solid 1.5em;*/
-    }
-
-    #input-uid>input {
-        background-color: #126FEB;
-        color: white;
-        border: none;
-        outline: none;
-    }
-    #input-uid {
-        width: 100%;
-        max-width: 622px;
-        margin: 0 auto;
-    }
-
-    #area,
-    #end-at {
-        background-color: #1b41b2;
-    }
-    #main {
-        background-image: linear-gradient(to left bottom, #f83ee5, #9d8aff, #00b2ff, #00caff, #12d9eb);
-        height: 100vh;
-    }
-    .text-white {
-        padding: 0px;
-    }
-    #end-at {
-        background-color: #126FEB;
-        font-size: 24px;
+    .timer-box{
+        background-image: linear-gradient(to right top, #e982ec, #ca7bef, #a776f1, #7b72f1, #396eef);        align-items: center;
+        display: table;
+        padding: 1em;
         border-radius: 5px;
-        padding: 8px 12px;
-        box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+        margin-bottom: 1rem;
     }
-    .wheel-item {
-        background-image: linear-gradient(to left bottom, #73d9f6, #00bbff, #0099ff, #0071ff, #123aeb);
-        border-radius: 15px;
-        width: 100%;
-        max-width: 190px;
-        margin: 0 27px 20px 0;
-    }
-    #roll {
-        background-color: #D4D4D4;
-        border-radius: 15px;
-        width: 100%;
-        max-width: 190px;
-        margin: 0 27px 20px 0;
-    }
-    #wheel-1, #wheel-4, #wheel-6 {
-        margin-left: 30px;
-    }
-    .title-content h2 {
+    .timer-box > p {
         text-align: center;
+        vertical-align: middle;
+        display: table-cell;
     }
-    .title-content {
-        padding: 8px 12px !important;
-        border-radius: 8px;
+    #timer{
+        display: flex;
+        align-items: center;
+        justify-self: center;
         background-color: #126FEB;
-        box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+        border-radius: 10px;
+        height:fit-content;
+        padding: 2em 0;
+        bottom: 0;
     }
-    #area {
-        height: 100%;
-        max-height: 300px;
+    #end-at > h3{
+        display: inline-block;
+        width: max-content;
+        padding: 1rem;
+        border-radius: 10px;
+        background-color: #126FEB;
+    }
+    
+    #my-prize > #title{
+        background-color: #126FEB;
+    }
+    #prize-result{
+        overflow-y: scroll;
+    } */
+    /*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.4.14,
+* Autoprefixer: v10.4.7
+* Browsers: last 4 version
+*/
+
+.row:has( > .timer-box){
+        margin : 0 0px;
+        color : white;
+        font-weight: bold;
+    }
+    .timer-box{
+        background-image: -webkit-gradient(linear, left bottom, right top, from(#e982ec), color-stop(#ca7bef), color-stop(#a776f1), color-stop(#7b72f1), to(#396eef));
+        background-image: -o-linear-gradient(left bottom, #e982ec, #ca7bef, #a776f1, #7b72f1, #396eef);
+        background-image: linear-gradient(to right top, #e982ec, #ca7bef, #a776f1, #7b72f1, #396eef);        -webkit-box-align: center;        -ms-flex-align: center;        align-items: center;
+        display: table;
+        padding: 1em;
+        border-radius: 5px;
+        margin-bottom: 1rem;
+    }
+    .timer-box > p {
+        text-align: center;
+        vertical-align: middle;
+        display: table-cell;
+    }
+    #timer{
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+            -ms-flex-align: center;
+                align-items: center;
+        -ms-grid-column-align: center;
+            justify-self: center;
+        background-color: #126FEB;
+        border-radius: 10px;
+        height:-webkit-fit-content;
+        height:-moz-fit-content;
+        height:fit-content;
+        padding: 2em 0;
+        bottom: 0;
+    }
+    #end-at > h3{
+        display: inline-block;
+        width: -webkit-max-content;
+        width: -moz-max-content;
+        width: max-content;
+        padding: 1rem;
+        border-radius: 10px;
+        background-color: #126FEB;
+    }
+    
+    #my-prize > #title{
+        background-color: #126FEB;
+    }
+    #prize-result{
         overflow-y: scroll;
     }
-
-
 </style>
-<div id="main" class="h-100 d-flex align-items-center justify-content-center">
-
+<div id="main" class="row align-items-center justify-content-center">
     <script>
         $.ajax({
             type: 'GET',
@@ -159,129 +143,97 @@
             }
         })
     </script>
-
-    <div class="row h-60 w-100" style="margin: 0 12em ;">
-        <h3 class="text-white mb-3">
-            <span id="end-at" class="px-2 py-1 custom">Kết thúc lúc</span>
-        </h3>
-        <div class="col-md-4 d-flex flex-column">
-            <div id="timer" class="row">
-                <div class="col-3">
-                    <div class="timer-box" id="day">
-                        <p class="h1"></p>
+    
+    <div id="content" class="row col-8">
+        <div id="end-at" class="row text-white ">
+            <h3>KẾT THÚC LÚC</h3>
+        </div>
+        <div id="info" class="row col-4">
+            <div id="timer" class="row col-12">
+                <div class="row">
+                    <div class="col-3 row">
+                        <div class="timer-box" id="day">
+                            <p class="h1"></p>
+                        </div>
+                        <div class="col-12 h1">D</div>
                     </div>
-                    <p class="h5">D</p>
-                </div>
-                <div class="col-3">
-                    <div class="timer-box" id="hour">
-                        <p class="h1"></p>
+                    <div class="col-3 row">
+                        <div class="timer-box" id="hour">
+                            <p class="h1"></p>
+                        </div>
+                        <div class="col-12 h1">H</div>
                     </div>
-                    <p class="h5">H</p>
-                </div>
-                <div class="col-3">
-                    <div class="timer-box" id="minute">
-                        <p class="h1"></p>
+                    <div class="col-3 row">
+                        <div class="timer-box" id="minute">
+                            <p class="h1"></p>
+                        </div>
+                        <div class="col-12 h1">M</div>
                     </div>
-                    <p class="h5">M</p>
-                </div>
-                <div class="col-3">
-                    <div class="timer-box" id="second">
-                        <p class="h1"></p>
+                    <div class="col-3 row">
+                        <div class="timer-box" id="second">
+                            <p class="h1"></p>
+                        </div>
+                        <div class="col-12 h1">S</div>
                     </div>
-                    <p class="h5">S</p>
                 </div>
             </div>
-            <div id="prize" class="text-white mt-3 flex-grow-1">
-                <div class="row h-100">
-                    <div id="title" class="h5 py-4 title-content">
-                        <h2>Phần thưởng của tôi</h2>
-                    </div>
-                    <div id="area">
-                        <ul>
-
-                        </ul>
-                    </div>
+            <div id="my-prize" class="row col-12">
+                <div class="row" id="title">
+                    <h4>PHẦN THƯỞNG CỦA TÔI</h4>
+                </div>
+                <div id="prize-result" class="row">
+                    
                 </div>
             </div>
         </div>
-        <div class="col-md-8 px-5">
-            <div id="input-uid" class="row mb-3">
-                <input type="text" class="form-control" placeholder="Your UID here .. ">
+        <div id="wheel" class="row col-8">
+            <div id="input-uid" class="row">
+                <input type="text" class="form-control" placeholder="Your UID here .. "> 
             </div>
-            <div id="wheel" class="text-white">
+            <div id="rectangle" class="row">
                 <div class="row">
-                    <div class="col-4 wheel-item" id="wheel-1">
+                    <div class="wheel-item col-4" id="wheel-1">
                         <img src="media/{{prize.0.image}}" alt="" width="100px" height="auto">
                         <p class="h5">{{prize.0.prize}}</p>
                     </div>
-                    <div class="col-4 wheel-item" id="wheel-2">
+                    <div class="wheel-item col-4" id="wheel-2">
                         <img src="media/{{prize.1.image}}" alt="" width="100px" height="auto">
                         <p class="h5">{{prize.1.prize}}</p>
                     </div>
-                    <div class="col-4 wheel-item" id="wheel-3">
+                    <div class="wheel-item col-4" id="wheel-3">
                         <img src="media/{{prize.2.image}}" alt="" width="100px" height="auto">
                         <p class="h5">{{prize.2.prize}}</p>
-
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-4 wheel-item" id="wheel-4">
+                    <div class="wheel-item col-4" id="wheel-4">
                         <img src="media/{{prize.3.image}}" alt="" width="100px" height="auto">
                         <p class="h5">{{prize.3.prize}}</p>
-
                     </div>
                     <div class="col-4 d-flex justify-content-center align-items-center" id="roll">
                         <button class="btn btn-secondary px-4 py-2">ROLL</button>
                     </div>
-                    <div class="col-4 wheel-item" id="wheel-5">
+                    <div class="wheel-item col-4" id="wheel-5">
                         <img src="media/{{prize.4.image}}" alt="" width="100px" height="auto">
                         <p class="h5">{{prize.4.prize}}</p>
-
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-4 wheel-item" id="wheel-6">
+                    <div class="wheel-item col-4" id="wheel-6">
                         <img src="media/{{prize.5.image}}" alt="" width="100px" height="auto">
                         <p class="h5">{{prize.5.prize}}</p>
-
                     </div>
-                    <div class="col-4 wheel-item" id="wheel-7">
+                    <div class="wheel-item col-4" id="wheel-7">
                         <img src="media/{{prize.6.image}}" alt="" width="100px" height="auto">
                         <p class="h5">{{prize.6.prize}}</p>
-
                     </div>
-                    <div class="col-4 wheel-item" id="wheel-8">
+                    <div class="wheel-item col-4" id="wheel-8">
                         <img src="media/{{prize.7.image}}" alt="" width="100px" height="auto">
                         <p class="h5">{{prize.7.prize}}</p>
-
                     </div>
                 </div>
             </div>
         </div>
-
-        <!-- Button trigger modal -->
-<button id="modal-button" style="display: none;" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#resultModal">
-    Launch demo modal
-  </button>
-  
-  <!-- Modal -->
-  <div class="modal fade" id="resultModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">Kết quả</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body" id="modal-result-text">
-          
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
     </div>
 </div>
 <script>
@@ -289,7 +241,7 @@
     var round_item = []
     var rolling = [];
     var time = [];
-    var roll_interval = null ; 
+    var roll_interval = null;
 
 
     function add_to_myprize(prize) {
@@ -297,7 +249,7 @@
         area_prize = area_prize.children[0];
         area_prize.innerHTML += "<li >" + prize + "</li>"
 
-        $('#modal-result-text').text('Chúc mừng bạn đã nhận được '  + prize) ;
+        $('#modal-result-text').text('Chúc mừng bạn đã nhận được ' + prize);
         $('#modal-button').click();
     }
 
@@ -346,9 +298,9 @@
 
     $('#roll>button').click(function (e) {
         e.preventDefault();
-        if(roll_interval != null){
-            alert("Vòng xoay đang được thực hiện") ;
-            return ;
+        if (roll_interval != null) {
+            alert("Vòng xoay đang được thực hiện");
+            return;
         }
         if ($("#input-uid>input").val().replace(/^\s+|\s+$/g, "").length != 0) {
             let list_prize = [];
