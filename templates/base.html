@@ -22,6 +22,12 @@
         background-image: linear-gradient(to left bottom, #f83ee5, #9d8aff, #00b2ff, #00caff, #12d9eb);
     }
 </style>
+<script>
+    var scale = 'scale(1)';
+document.body.style.webkitTransform =  scale;    // Chrome, Opera, Safari
+ document.body.style.msTransform =   scale;       // IE 9
+ document.body.style.transform = scale;     // General
+</script>
 <body>
     {% block content %}
     {% endblock %}
