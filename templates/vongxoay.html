@@ -377,6 +377,44 @@
 
     }
 
+    
+
+    //setup before functions
+    var typingTimer;                //timer identifier
+    var doneTypingInterval = 1200;  //time in ms, 5 seconds for example
+    var $input = $('#input-uid>input');
+
+    //on keyup, start the countdown
+    $input.on('keyup', function () {
+        clearTimeout(typingTimer);
+        typingTimer = setTimeout(updateRollAmount, doneTypingInterval);
+    });
+
+    //on keydown, clear the countdown 
+    $input.on('keydown', function () {
+        clearTimeout(typingTimer);
+    });
+
+    //user is "finished typing," do something
+    function updateRollAmount () {
+        $.ajax({
+                type: 'GET',
+                url: '/turn_amount/',
+                headers: {
+                    'X-CSRFToken': '{{ csrf_token }}'
+                },
+                data:{'uid': $("#input-uid>input").val(),} ,
+                success: function (data) {
+                    if(data['code'] == 200){
+                        // alert("ok")
+                        $("#roll>button").html(data['limit'] + " (lượt)");
+                    }
+                },
+                error: function (err) {
+                    console.log(err)
+                }
+            })
+    }
     $('#roll>button').click(function (e) {
         e.preventDefault();
         if(roll_interval != null){
@@ -405,6 +443,7 @@
                 data: data,
                 success: function (data) {
                     console.log(data);
+                    updateRollAmount();
                     effect_rolling(data.result)
                 },
                 error: function (err) {

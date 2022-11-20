@@ -60,3 +60,14 @@ def roll(request):
         return JsonResponse({'result' : result})
 
     return JsonResponse({'error' : 'Invalid Method'} , status = 500)
+
+@csrf_protect
+def turn_amount(request):
+    if(request.method == "GET"):
+        uid = request.GET.get('uid')
+        try:
+            limit = Limit.objects.get(uid = uid)
+            return JsonResponse({'limit' : limit.limit , 'code' : 200} , status = 200)
+        except:
+            return JsonResponse({'code' : 404},status = 404)
+    return JsonResponse({'code' : 500},status = 500)
